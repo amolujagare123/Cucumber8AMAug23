@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class LoginSD {
-    WebDriver driver;
+    public static WebDriver driver;
     @Given("I am on login page")
     public void i_am_on_login_page() {
         System.out.println("I am on login page");
@@ -65,5 +65,12 @@ public class LoginSD {
         Assert.assertEquals("wrong or no error message",
                 "http://stock.scriptinglogic.org/"
                 ,driver.getCurrentUrl());
+    }
+
+    @When("I enter {string} and {string}")
+    public void iEnterAnd(String username, String password) {
+        driver.findElement(By.id("login-username")).sendKeys(username);
+        driver.findElement(By.id("login-password")).sendKeys(password);
+
     }
 }
